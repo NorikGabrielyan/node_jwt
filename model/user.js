@@ -10,7 +10,6 @@ module.exports = (sequelize, Sequelize) => {
             defaultValue: 0
         },
         refreshToken:Sequelize.STRING,
-        password: Sequelize.STRING,
         type:Sequelize.TINYINT
     });
     return User;

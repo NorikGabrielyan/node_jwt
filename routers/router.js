@@ -8,10 +8,16 @@ const tokenService = require("./../service/token-service")
 const passport = require('passport');
 const Local = require("passport-local").Strategy
 
-router.post('/check', passport.authenticate('jwt', { session: false }), (req, res) => {
+router.get('/profile', passport.authenticate('jwt', { session: false }), (req, res) => {
     res.send({ user: req.user })
 })
 
+// fetch("/profile", {
+//     method:"GET",
+//     headers:{
+//         authenticate:"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MiwibmFtZSI6IkxpbGl0Iiwic3VybmFtZSI6IkFueWFuIiwiZW1haWwiOiJsaWxpdEBtYWlsLmNvbSIsImlzVmVyaWZpZWQiOjEsInR5cGUiOm51bGwsImlhdCI6MTcxMzM3MjI4OSwiZXhwIjoxNzEzMzcyNDY5fQ.1ZzSGXEbtpx0zcNJu5IzYXFHlkrP_Grgc0Zn6e-Xi_8"
+//     }
+// })
 router.post('/register', async (req, res, next) => {
     try {
         const { name, surname, email, password } = req.body
